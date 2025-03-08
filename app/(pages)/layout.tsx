@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Navbar from "@/components/Navbar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Scrollbar } from "@radix-ui/react-scroll-area";
-import { ClerkProvider } from "@clerk/nextjs";
-import { ThemeProvider } from "next-themes";
+import { DockBtm } from "@/components/ui/dock-top";
+import { NAV_ITEMS } from "@/constants";
 
 const poppinsFont = Poppins({
 	weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
@@ -24,25 +24,17 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<ClerkProvider dynamic>
-			<html lang="en" suppressHydrationWarning>
-				<body
-					className={`${poppinsFont.className} antialiased bg-background text-foreground`}
-				>
-					<ThemeProvider
-						attribute="class"
-						defaultTheme="system"
-						enableSystem
-						disableTransitionOnChange
-					>
-						<ScrollArea className="h-screen">
-							<main>{children}</main>
+		<div
+			className={`${poppinsFont.className} antialiased bg-background text-foreground`}
+		>
+			<ScrollArea className="h-screen">
+				<nav>
+					<Navbar />
+				</nav>
+				<main>{children}</main>
 
-							<Scrollbar />
-						</ScrollArea>
-					</ThemeProvider>
-				</body>
-			</html>
-		</ClerkProvider>
+				<Scrollbar />
+			</ScrollArea>
+		</div>
 	);
 }
