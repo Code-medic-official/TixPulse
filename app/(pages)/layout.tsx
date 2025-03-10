@@ -1,11 +1,20 @@
+import AppSidebar from "@/components/AppSidebar";
+import Navbar from "@/components/Navbar";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+	SidebarInset,
+	SidebarProvider,
+	SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { Scrollbar } from "@radix-ui/react-scroll-area";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "../globals.css";
-import Navbar from "@/components/Navbar";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Scrollbar } from "@radix-ui/react-scroll-area";
-import { DockBtm } from "@/components/ui/dock-top";
-import { NAV_ITEMS } from "@/constants";
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const poppinsFont = Poppins({
 	weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
@@ -27,14 +36,20 @@ export default function RootLayout({
 		<div
 			className={`${poppinsFont.className} antialiased bg-background text-foreground`}
 		>
-			<ScrollArea className="h-screen">
-				<nav>
-					<Navbar />
-				</nav>
-				<main>{children}</main>
+			<SidebarProvider>
+				<AppSidebar />
 
-				<Scrollbar />
-			</ScrollArea>
+				<SidebarInset>
+					<ScrollArea className="h-screen">
+						<nav className="relative">
+							<Navbar />
+						</nav>
+						<main className="p-2 md:p-3">{children}</main>
+
+						<Scrollbar />
+					</ScrollArea>
+				</SidebarInset>
+			</SidebarProvider>
 		</div>
 	);
 }
