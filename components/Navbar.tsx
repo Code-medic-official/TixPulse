@@ -13,7 +13,7 @@ export default function Navbar() {
 
 			<Tooltip>
 				<TooltipTrigger asChild className="hidden md:block">
-					<SidebarTrigger className="relative -left-2" />
+					<SidebarTrigger className="sticky top-2" />
 				</TooltipTrigger>
 				<TooltipContent>
 					<span>Toggle sidebar</span> <code>ctrl + b</code>

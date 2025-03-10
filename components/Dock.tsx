@@ -54,8 +54,8 @@ export default function Dock() {
 					{isOpen && (
 						<motion.div
 							variants={mobileMenuVariant}
-							initial={"collase"}
-							animate={"expand"}
+							initial="collase"
+							animate="expand"
 							exit="collapse"
 							transition={{
 								type: "spring",
@@ -83,11 +83,17 @@ export default function Dock() {
 	} else {
 		// Desktop dock
 		return (
-			<div className="sm:text-secondary flex items-center gap-x-3 bg-secondary size-fit mx-auto rounded-xl p-1 sticky top-1">
+			<motion.div
+				initial={{ y: -100, opacity: 0 }}
+				animate={{ y: 0, opacity: 1 }}
+				transition={{ delay: 0.2, type: "spring" }}
+
+				className="sm:text-secondary flex items-center gap-x-3 bg-secondary size-fit mx-auto rounded-xl p-1 sticky top-1"
+			>
 				{NAV_ITEMS.map((item, i) => (
 					<NavItem key={i} {...item} position="top" />
 				))}
-			</div>
+			</motion.div>
 		);
 	}
 }
@@ -148,9 +154,9 @@ const NavItem = ({
 									? downVariant
 									: leftVariant
 							}
-							initial={"hidden"}
-							animate={"visible"}
-							exit={"hidden"}
+							initial="hidden"
+							animate="visible"
+							exit="hidden"
 							className="font-medium text-xs text-muted-foreground bg-secondary p-1 rounded-sm shadow absolute"
 						>
 							{title}
