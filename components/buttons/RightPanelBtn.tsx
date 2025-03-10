@@ -10,6 +10,7 @@ import {
 import { Button } from "../ui/button";
 import { PanelRightOpen } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 
 export default function RightPanelBtn() {
 	return (
@@ -25,11 +26,23 @@ export default function RightPanelBtn() {
 				<TooltipContent>Activities panel</TooltipContent>
 			</Tooltip>
 
-			<SheetContent>
-				<SheetHeader>
-					<SheetTitle>Activity</SheetTitle>
-					<SheetDescription>Track your activity</SheetDescription>
-				</SheetHeader>
+			<SheetContent className="p-3" >
+				<div className="hidden">
+					<SheetHeader>
+						<SheetTitle>Activity</SheetTitle>
+						<SheetDescription>Track your activity</SheetDescription>
+					</SheetHeader>
+				</div>
+				<Tabs>
+					<TabsList>
+						<TabsTrigger value="My-tickets" >My tickets</TabsTrigger>
+						<TabsTrigger value="Invites" >Invites</TabsTrigger>
+					</TabsList>
+
+
+					<TabsContent value="My-tickets" >My tickets</TabsContent>
+					<TabsContent value="Invites" >Invites</TabsContent>
+				</Tabs>
 			</SheetContent>
 		</Sheet>
 	);
