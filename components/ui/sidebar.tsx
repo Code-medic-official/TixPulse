@@ -263,14 +263,17 @@ function SidebarTrigger({
 			data-slot="sidebar-trigger"
 			variant="secondary"
 			size="icon"
-			className={cn("block z-20 border rounded-full text-muted-foreground ", className)}
+			className={" z-40 text-muted-foreground "}
 			onClick={(event) => {
 				onClick?.(event);
 				toggleSidebar();
 			}}
 			{...props}
+			asChild
 		>
-			<ChevronRight />
+			<Button size={"icon"} className={cn(className)}>
+				<ChevronRight />
+			</Button>
 			{/* <span className="sr-only">Toggle Sidebar</span> */}
 		</Button>
 	);

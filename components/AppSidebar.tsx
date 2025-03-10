@@ -9,6 +9,8 @@ import {
 	SidebarHeader,
 	useSidebar,
 } from "./ui/sidebar";
+import { SignedIn, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 export default function AppSidebar() {
 	const { state } = useSidebar();
@@ -21,7 +23,7 @@ export default function AppSidebar() {
 	return (
 		<Sidebar collapsible="icon">
 			<SidebarHeader>
-				<div className="flex items-center gap-x-2">
+				<Link href="/" className="flex items-center gap-x-2">
 					<Image
 						src="/icon.jpg"
 						alt="logo"
@@ -55,14 +57,18 @@ export default function AppSidebar() {
 							</motion.div>
 						)}
 					</AnimatePresence>
-				</div>
+				</Link>
 			</SidebarHeader>
 
 			<SidebarContent>
-				<h2>Sidebar Stuff</h2>
+				{/* <h2>Sidebar Stuff</h2> */}
 			</SidebarContent>
 
-			<SidebarFooter></SidebarFooter>
+			<SidebarFooter>
+				<SignedIn>
+					<UserButton showName />
+				</SignedIn>
+			</SidebarFooter>
 		</Sidebar>
-	);  
+	);
 }

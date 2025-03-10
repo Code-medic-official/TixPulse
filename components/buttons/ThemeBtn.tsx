@@ -16,8 +16,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 export function ThemeBtn() {
 	const { setTheme, theme } = useTheme();
 
-	console.log(theme);
-
 	return (
 		<DropdownMenu>
 			<Tooltip>

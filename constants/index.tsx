@@ -1,4 +1,4 @@
-import { LayoutDashboard, CreditCard, History, User } from "lucide-react";
+import { LayoutDashboard, CreditCard, History, User, Plus } from "lucide-react";
 
 export const NAV_ITEMS = [
 	{
@@ -10,6 +10,12 @@ export const NAV_ITEMS = [
 		title: "Checkout",
 		href: "/checkout",
 		icon: <CreditCard />,
+	},
+	{
+		title: "Create event✨",
+		href: "/create-event",
+		icon: <Plus strokeWidth={4} />,
+		// icon: <Plus stroke="#e11d48" strokeWidth={4} />,
 	},
 	{
 		title: "History",
