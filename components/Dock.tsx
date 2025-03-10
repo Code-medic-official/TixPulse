@@ -34,7 +34,7 @@ export default function Dock() {
 			<motion.div
 				initial={{ y: 100, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
-				transition={{ delay: 0.2, type: "spring" }}
+				transition={{ delay: 0.5, type: "spring" }}
 				className="sm:text-secondary flex items-center gap-x-3 bg-secondary w-fit rounded-xl p-1 fixed bottom-2 right-1/2 translate-x-1/2"
 			>
 				{NAV_ITEMS.map((item, i) => (
@@ -63,6 +63,7 @@ export default function Dock() {
 								staggerChildren: 0.2,
 							}}
 							layout
+							onClick={() => setTimeout(() => setIsOpen(false), 500)}
 							className="flex flex-col gap-y-2"
 						>
 							{NAV_ITEMS.map((item, i) => (
@@ -86,9 +87,8 @@ export default function Dock() {
 			<motion.div
 				initial={{ y: -100, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
-				transition={{ delay: 0.2, type: "spring" }}
-
-				className="sm:text-secondary flex items-center gap-x-3 bg-secondary size-fit mx-auto rounded-xl p-1 sticky top-1"
+				transition={{ delay: 0.5, type: "spring" }}
+				className="sm:text-secondary flex items-center gap-x-3 bg-secondary size-fit mx-auto rounded-xl p-1 absolute top-2 right-1/2 translate-x-1/2"
 			>
 				{NAV_ITEMS.map((item, i) => (
 					<NavItem key={i} {...item} position="top" />
@@ -139,6 +139,7 @@ const NavItem = ({
 					whileTap={{ scale: 0.95 }}
 					className={cn(
 						"text-muted-foreground !bg-muted-foreground/20 border text-xl p-2 rounded-xl",
+						href === "/create-event" && "text-primary",
 						pathname.startsWith(href) && "!bg-primary text-primary-foreground"
 					)}
 				>

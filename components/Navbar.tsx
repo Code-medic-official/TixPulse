@@ -1,37 +1,35 @@
 import Image from "next/image";
-import AppSidebar from "./AppSidebar";
-import Dock from "./Dock";
-import { SidebarProvider, SidebarTrigger } from "./ui/sidebar";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
-import { ThemeBtn } from "./buttons/ThemeBtn";
+import Link from "next/link";
 import RightPanelBtn from "./buttons/RightPanelBtn";
+import { ThemeBtn } from "./buttons/ThemeBtn";
+import Dock from "./Dock";
+import { SidebarTrigger } from "./ui/sidebar";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 export default function Navbar() {
 	return (
-		<SidebarProvider>
-			<AppSidebar />
+		<>
+			<div className="w-full h-fit p-2 sticky top-0 flex items-center justify-between gap-x-3 bg-secondary/30 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none">
+				<div className="flex items-center justify-center gap-x-2">
+					<Link href="/" className="flex items-center gap-x-1">
+						<Image
+							src="/icon.jpg"
+							alt="logo"
+							width={40}
+							height={40}
+							priority
+							className="object-cover rounded-lg md:hidden"
+						/>
 
-			<Tooltip>
-				<TooltipTrigger asChild className="hidden md:block">
-					<SidebarTrigger className="sticky top-2" />
-				</TooltipTrigger>
-				<TooltipContent>
-					<span>Toggle sidebar</span> <code>ctrl + b</code>
-				</TooltipContent>
-			</Tooltip>
-			<div className="w-full h-fit p-2 fixed top-0 flex items-center justify-between gap-x-3 bg-secondary/30 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none">
-				<div className="flex items-center justify-center gap-x-2" >
-					<Image
-						src="/icon.jpg"
-						alt="logo"
-						width={45}
-						height={45}
-						priority
-						className="object-cover rounded-lg md:hidden"
-					/>
+						<h3 className="hidden sm:block md:hidden text-primary font-semibold text-xl">
+							TixPulse
+						</h3>
+					</Link>
+
+
 					<Tooltip>
-						<TooltipTrigger asChild className="md:hidden block">
-							<SidebarTrigger className="relative rounded-md" />
+						<TooltipTrigger asChild>
+							<SidebarTrigger className="md:!absolute  " />
 						</TooltipTrigger>
 						<TooltipContent>
 							<span>Toggle sidebar</span> <code>ctrl + b</code>
@@ -45,6 +43,6 @@ export default function Navbar() {
 				</div>
 			</div>
 			<Dock />
-		</SidebarProvider>
+		</>
 	);
 }
