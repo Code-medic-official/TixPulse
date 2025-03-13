@@ -11,6 +11,8 @@ import {
 } from "./ui/sidebar";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
+import MotionBtn from "./ui/motion-btn";
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 export default function AppSidebar() {
 	const { state } = useSidebar();
@@ -25,7 +27,7 @@ export default function AppSidebar() {
 			<SidebarHeader>
 				<Link href="/" className="flex items-center gap-x-2">
 					<Image
-						src="/icon.jpg"
+						src="/assets/icon.jpg"
 						alt="logo"
 						width={45}
 						height={45}
@@ -63,11 +65,19 @@ export default function AppSidebar() {
 			<SidebarContent>{/* <h2>Sidebar Stuff</h2> */}</SidebarContent>
 
 			<SidebarFooter>
-				<div className="bg-secondary p-2 rounded-lg">
-					<SignedIn>
-						<UserButton showName />
-					</SignedIn>
-				</div>
+				<Tooltip>
+					<TooltipTrigger asChild>
+						<MotionBtn className="px-2 py-6 bg-gradient-to-br from-rose-600 to-orange-600 rounded-lg">
+							<Link
+								href="/blog"
+								className="w-full p-2 bg-background rounded-md  relative group transition duration-200 text-white hover:bg-transparent"
+							>
+								Blog
+							</Link>
+						</MotionBtn>
+					</TooltipTrigger>
+					<TooltipContent>Explore our blog✨</TooltipContent>
+				</Tooltip>
 			</SidebarFooter>
 		</Sidebar>
 	);

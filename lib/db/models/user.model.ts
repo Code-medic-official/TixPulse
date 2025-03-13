@@ -13,10 +13,7 @@ const userSchema = new Schema(
 			required: true,
 			unique: true,
 		},
-		fname: {
-			type: String,
-			required: true,
-		},
+		fname: String,
 		lname: String,
 		email: {
 			type: String,

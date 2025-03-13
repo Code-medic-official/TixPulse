@@ -42,7 +42,7 @@ export const updateUser = async (
 	try {
 		await connectDb();
 
-		// ! test this out
+		// ? This acutually works✨🤩.
 		await userModel.findOneAndUpdate(
 			{ clerkId: updatedUser.clerkId },
 			updatedUser

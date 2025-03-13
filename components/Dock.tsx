@@ -48,7 +48,7 @@ export default function Dock() {
 				initial={{ x: 100, opacity: 0 }}
 				animate={{ x: 0, opacity: 1 }}
 				transition={{ delay: 0.5 }}
-				className="fixed bottom-3 right-3 space-y-3"
+				className="fixed bottom-12 right-3 space-y-3"
 			>
 				<AnimatePresence>
 					{isOpen && (
@@ -74,9 +74,9 @@ export default function Dock() {
 						</motion.div>
 					)}
 				</AnimatePresence>
-				<Button size="icon" onClick={() => setIsOpen((prev) => !prev)} asChild>
+				<Button  onClick={() => setIsOpen((prev) => !prev)} asChild className="size-10 p-2">
 					<motion.button whileTap={{ scale: 0.9 }}>
-						<Menu />
+						<Menu size={25} strokeWidth={3} />
 					</motion.button>
 				</Button>
 			</motion.div>

@@ -14,15 +14,15 @@ declare global {
 		_id?: string;
 		clerkId: string;
 		username: string;
-		fname: string;
-		lname?: string;
 		imageUrl?: string;
 		email: string;
 		onboarded?: boolean;
 		followers?: (string | iUser)[];
 		blocklist?: (string | iUser)[];
-
+		
 		// ! Onboarding fields
+		fname?: string;
+		lname?: string;
 		bio?: string;
 		dob?: string;
 		location?: string;
