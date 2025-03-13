@@ -36,6 +36,7 @@ export const POST = async (req: Request) => {
 	// New User created
 
 	if (evt.type === "user.created") {
+		console.log(evt.data);
 		try {
 			const {
 				id: clerkId,
@@ -64,6 +65,8 @@ export const POST = async (req: Request) => {
 
 	// ! User Updated
 	if (evt.type === "user.updated") {
+		console.log(evt.data);
+
 		try {
 			const {
 				email_addresses,
@@ -92,6 +95,8 @@ export const POST = async (req: Request) => {
 
 	// ! User Deleted
 	if (evt.type === "user.deleted") {
+		console.log(evt.data);
+
 		try {
 			const { id: clerkId } = evt.data;
 			await deleteUser(clerkId!);
@@ -102,4 +107,6 @@ export const POST = async (req: Request) => {
 			return NextResponse.json({ msg: "Delete User Failed" }, { status: 500 });
 		}
 	}
+
+	return NextResponse.json({ msg: "WEbhook ran" }, { status: 200 });
 };

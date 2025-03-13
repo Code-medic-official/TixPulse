@@ -23,7 +23,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<ClerkProvider dynamic>
+		<ClerkProvider afterSignOutUrl="/" dynamic>
 			<html lang="en" suppressHydrationWarning>
 				<body
 					className={`${poppinsFont.className} antialiased bg-background text-foreground`}
