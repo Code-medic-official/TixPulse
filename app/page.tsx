@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import Lanyard from "@/components/ui/lanyard";
 import MotionBtn from "@/components/ui/motion-btn";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";

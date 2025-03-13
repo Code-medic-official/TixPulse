@@ -3,18 +3,12 @@ import Navbar from "@/components/Navbar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
 	SidebarInset,
-	SidebarProvider,
-	SidebarTrigger,
+	SidebarProvider
 } from "@/components/ui/sidebar";
 import { Scrollbar } from "@radix-ui/react-scroll-area";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "../globals.css";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 const poppinsFont = Poppins({
 	weight: ["100", "200", "300", "400", "500", "600", "700", "800"],

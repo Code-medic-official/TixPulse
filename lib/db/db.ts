@@ -12,7 +12,7 @@ const connectDb = async (): Promise<void> => {
 			console.log(`Db connected: ${db.connection.name}🛢️`);
 		}
 	} catch (error: any) {
-		console.error("Db not Connect⚠️");
+		console.error("Db not Connect⚠️:👉", error);
 		process.exit(1);
 	}
 };
