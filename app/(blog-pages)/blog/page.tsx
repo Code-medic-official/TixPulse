@@ -5,3 +5,4 @@ export default function page() {
     <div>Blog coming soon</div>
   )
 }
+  

@@ -2,6 +2,8 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
+import MotionBtn from "./ui/motion-btn";
 import {
 	Sidebar,
 	SidebarContent,
@@ -9,9 +11,6 @@ import {
 	SidebarHeader,
 	useSidebar,
 } from "./ui/sidebar";
-import { SignedIn, UserButton } from "@clerk/nextjs";
-import Link from "next/link";
-import MotionBtn from "./ui/motion-btn";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
 export default function AppSidebar() {
