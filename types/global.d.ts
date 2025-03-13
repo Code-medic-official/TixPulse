@@ -18,17 +18,17 @@ declare global {
 		lname: string;
 		imageUrl?: string;
 		email: string;
-		onboarded: boolean;
+		onboarded?: boolean;
 		followers?: (string | iUser)[];
 		blocklist?: (string | iUser)[];
 
 		// ! Onboarding fields
 		bio?: string;
-		dob: string;
+		dob?: string;
 		location?: string;
 		occupation?: string;
-		createdAt: string;
-		updatedAt: string;
+		createdAt?: string;
+		updatedAt?: string;
 	}
 
 	interface iEvent {

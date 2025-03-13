@@ -48,10 +48,10 @@ export const POST = async (req: Request) => {
 
 			await createUser({
 				clerkId,
-				username,
 				imageUrl,
-				fname,
-				lname,
+				username: username!,
+				fname: fname!,
+				lname: lname!,
 				email: email_addresses[0].email_address,
 			});
 
@@ -72,15 +72,15 @@ export const POST = async (req: Request) => {
 				image_url: imageUrl,
 				username,
 				id: clerkId,
-			} = await evt.data;
+			} = evt.data;
 
 			await updateUser({
 				clerkId,
 				email: email_addresses[0].email_address,
-				fname,
-				lname,
+				username: username!,
+				fname: fname!,
+				lname: lname!,
 				imageUrl,
-				username,
 			});
 
 			return NextResponse.json({ msg: "User Updated" }, { status: 200 });
