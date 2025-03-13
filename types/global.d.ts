@@ -15,7 +15,7 @@ declare global {
 		clerkId: string;
 		username: string;
 		fname: string;
-		lname: string;
+		lname?: string;
 		imageUrl?: string;
 		email: string;
 		onboarded?: boolean;
