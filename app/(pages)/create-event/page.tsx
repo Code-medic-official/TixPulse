@@ -1,6 +1,5 @@
 import React from "react";
 
-export default function page({ event }: { event?: iEvent }) {
-	console.log(event)
+export default function page() {
 	return <div>New Event</div>;
 }
