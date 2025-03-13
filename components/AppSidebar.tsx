@@ -60,14 +60,14 @@ export default function AppSidebar() {
 				</Link>
 			</SidebarHeader>
 
-			<SidebarContent>
-				{/* <h2>Sidebar Stuff</h2> */}
-			</SidebarContent>
+			<SidebarContent>{/* <h2>Sidebar Stuff</h2> */}</SidebarContent>
 
 			<SidebarFooter>
-				<SignedIn>
-					<UserButton showName />
-				</SignedIn>
+				<div className="bg-secondary p-2 rounded-lg">
+					<SignedIn>
+						<UserButton showName />
+					</SignedIn>
+				</div>
 			</SidebarFooter>
 		</Sidebar>
 	);

@@ -5,6 +5,7 @@ import { ThemeBtn } from "./buttons/ThemeBtn";
 import Dock from "./Dock";
 import { SidebarTrigger } from "./ui/sidebar";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
 	return (
@@ -20,12 +21,11 @@ export default function Navbar() {
 							priority
 							className="object-cover rounded-lg md:hidden"
 						/>
-
+				
 						<h3 className="hidden sm:block md:hidden text-primary font-semibold text-xl">
 							TixPulse
 						</h3>
 					</Link>
-
 
 					<Tooltip>
 						<TooltipTrigger asChild>
@@ -40,6 +40,9 @@ export default function Navbar() {
 				<div className="flex items-center gap-x-2">
 					<ThemeBtn />
 					<RightPanelBtn />
+					<SignedIn>
+						<UserButton />
+					</SignedIn>
 				</div>
 			</div>
 			<Dock />

@@ -1,6 +1,6 @@
 "use server";
 
-import { iUser } from "@/global";
+// import { iUser } from "@/types/global";
 import connectDb from "../db";
 import userModel from "../models/user.model";
 import { revalidatePath } from "next/cache";

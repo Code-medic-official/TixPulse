@@ -21,15 +21,23 @@ const userSchema = new Schema(
 			type: String,
 			required: true,
 		},
-		bio: {
-			type: String,
-			default: "No event is gonna pass me with TixPulse🤩",
-		},
 		email: {
 			type: String,
 			required: true,
 			unique: true,
 		},
+		imageUrl: String,
+
+		bio: {
+			type: String,
+			default: "No event is gonna pass me with TixPulse🤩",
+		},
+		dob: {
+			type: Date,
+			required: true
+		},
+		location: String,
+		occupation: String,
 		onboarded: {
 			type: Boolean,
 			default: false,

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Lanyard from "@/components/ui/lanyard";
+import MotionBtn from "@/components/ui/motion-btn";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
@@ -10,7 +11,7 @@ export default function Home() {
 			Welcome to TixPulse🎉
 			<SignedOut>
 				<SignInButton mode="modal">
-					<Button>Sign in</Button>
+					<MotionBtn>Sign in</MotionBtn>
 				</SignInButton>
 			</SignedOut>
 			<SignedIn>
