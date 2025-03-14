@@ -1,3 +1,4 @@
+import { getEvent } from "@/lib/db/actions/event.action";
 import React from "react";
 
 export default async function page({
@@ -6,7 +7,8 @@ export default async function page({
 	params: Promise<{ id: string }>;
 }) {
 	const { id } = await params;
+	const event = await getEvent(id);
 
-	console.log(id);
-	return <div>page</div>;
+	console.log(event);
+	return <div>{event.name}</div>;
 }

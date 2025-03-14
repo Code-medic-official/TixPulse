@@ -5,6 +5,7 @@ import { auth, clerkClient } from "@clerk/nextjs/server";
 import connectDb from "../db";
 import userModel from "../models/user.model";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 // ! GEt clerk current user from mongodb
 export const getCurrentUser = async (): Promise<iUser> => {
@@ -12,6 +13,8 @@ export const getCurrentUser = async (): Promise<iUser> => {
 		await connectDb();
 
 		const { userId: clerkId } = await auth();
+
+		console.log(clerkId);
 
 		const user = await userModel
 			.findOne({ clerkId })
@@ -30,6 +33,27 @@ export const createUser = async (newUser: iUser): Promise<void> => {
 		await userModel.create(newUser);
 
 		revalidatePath("/");
+	} catch (error: any) {
+		throw new Error(error);
+	}
+};
+
+// Test to implement tagging
+export const getTaggedUsers = async (tags: string[]): Promise<iTaggedUser[]> => {
+	try {
+		await connectDb();
+
+		const taggedUsers= tags.map(async (tag) => {
+			const user = await userModel
+				.findOne({ username: tag.split("@")[1] })
+				.select(
+					"-fname -lname -age -followers -blocklist -blog -dob -occupation -email"
+				);
+
+			return { username: user.username, user } as iTaggedUser;
+		});
+
+		return JSON.parse(JSON.stringify(taggedUsers));
 	} catch (error: any) {
 		throw new Error(error);
 	}
@@ -60,7 +84,7 @@ export const updateUser = async (
 	try {
 		await connectDb();
 
-		// ? This acutually works✨🤩.
+		// ? This actually works✨🤩.
 		await userModel.findOneAndUpdate(
 			{ clerkId: updatedUser.clerkId },
 			updatedUser
@@ -72,7 +96,9 @@ export const updateUser = async (
 };
 
 // ? Update clerk user's metadata about the onboarding status
-export const updateOnboardingStatus = async (status: boolean): Promise<void> => {
+export const updateOnboardingStatus = async (
+	status: boolean
+): Promise<void> => {
 	try {
 		const { userId } = await auth();
 		const client = await clerkClient();
@@ -83,10 +109,10 @@ export const updateOnboardingStatus = async (status: boolean): Promise<void> => 
 			},
 		});
 
-		console.log(res.publicMetadata);
+		console.log("🌟 updating: ", res.publicMetadata);
+		// res.publicMetadata.onboardingComplete && redirect()
 
 		revalidatePath("/onboarding");
-
 	} catch (error: any) {
 		throw new Error(error);
 	}
