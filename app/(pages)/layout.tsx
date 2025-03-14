@@ -1,20 +1,12 @@
 import AppSidebar from "@/components/AppSidebar";
 import Navbar from "@/components/Navbar";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-	SidebarInset,
-	SidebarProvider
-} from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Scrollbar } from "@radix-ui/react-scroll-area";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "../globals.css";
-
-const poppinsFont = Poppins({
-	weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
-	subsets: ["latin"],
-	style: ["normal", "italic"],
-});
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
 	title: "TixPulse",
@@ -27,9 +19,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<div
-			className={`${poppinsFont.className} antialiased bg-background text-foreground`}
-		>
+		<div className={`bg-background text-foreground`}>
+			<Toaster />
 			<SidebarProvider>
 				<AppSidebar />
 

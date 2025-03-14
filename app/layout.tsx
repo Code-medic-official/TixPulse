@@ -35,7 +35,7 @@ export default function RootLayout({
 						disableTransitionOnChange
 					>
 						<ScrollArea className="h-screen">
-							<main>{children}</main>
+							{children}
 
 							<Scrollbar />
 						</ScrollArea>
