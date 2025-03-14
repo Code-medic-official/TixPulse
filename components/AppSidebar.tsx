@@ -74,7 +74,10 @@ export default function AppSidebar() {
 						>
 							<Link
 								href="/blog"
-								className={cn("w-full p-2 flex items-center justify-center  gap-1 bg-background rounded-md  relative group transition duration-200 text-foreground hover:bg-transparent", state === "collapsed" && "p-0 bg-transparent")}
+								className={cn(
+									"w-full p-2 text-xl flex items-center justify-center gap-1 bg-background rounded-md relative group transition duration-200 text-foreground hover:bg-transparent",
+									state === "collapsed" && "p-0 bg-transparent"
+								)}
 							>
 								<Notebook />
 								{state === "expanded" && <span>Blog</span>}

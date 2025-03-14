@@ -40,15 +40,14 @@ export default function OnboardingForm({ user }: { user: iUser }) {
 		},
 	});
 
-	const submitHandler = async (data: z.infer<typeof onboardingSchema>) => {
-		startTransition(() => {
-			updateUser({ ...user, ...data }, "/onboarding");
-			toast.promise(updateOnboardingStatus(true), {
-				loading: "Completing onboarding...",
-				success: "Onboarding completed!",
-				error: "Failed to complete onboarding!",
+	const submitHandler = (data: z.infer<typeof onboardingSchema>) => {
+		startTransition(async (): Promise<void> => {
+			await updateUser({ ...user, ...data }, "/onboarding");
+			await toast.promise(updateOnboardingStatus(true), {
+				loading: "Setting up profile...",
+				success: "Onboarding complete!🎉",
+				error: "Onboarding failed😢.Please try again 🙏",
 			});
-			// updateOnboardingStatus(true);
 			router.push("/events");
 		});
 	};
@@ -77,7 +76,10 @@ export default function OnboardingForm({ user }: { user: iUser }) {
 							<FormItem className="flex-1">
 								<FormLabel>First name</FormLabel>
 								<FormControl>
-									<Input {...field} placeholder={user.fname ?? "Firstname"} />
+									<Input
+										{...field}
+										placeholder={user.fname ?? "First name..."}
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -90,7 +92,10 @@ export default function OnboardingForm({ user }: { user: iUser }) {
 							<FormItem className="flex-1">
 								<FormLabel>Last name</FormLabel>
 								<FormControl>
-									<Input {...field} placeholder={user.lname ?? "Lastname"} />
+									<Input
+										{...field}
+										placeholder={user.lname ?? "Last name..."}
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>

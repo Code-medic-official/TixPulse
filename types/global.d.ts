@@ -18,7 +18,7 @@ declare global {
 		email: string;
 		followers?: (string | iUser)[];
 		blocklist?: (string | iUser)[];
-		
+
 		// ! Onboarding fields
 		fname?: string;
 		lname?: string;
@@ -30,21 +30,23 @@ declare global {
 	}
 
 	interface iEvent {
-		_id: string;
-		hosts: (string | iUser)[];
-		specialGuest?: (string | iUser)[];
+		_id?: string;
 		name: string;
+		slogan?: string;
 		description: string;
+		hosts: (string | iUser)[];
+		guests?: (string | iUser)[];
 		banner?: string;
 		date: string;
 		venue: string; // ? site/hall/building
 		location?: string; // 🤔 Google maps
 		state: "Draft" | "Published" | "Cancelled" | "Expired";
+		ageLimit?: number;
 		createdAt: string;
 		updatedAt: string;
 
-		// ? 🤔
-		ageLimit?: number;
+		activities?: string | string[];
+		dressCode?: string;
 	}
 
 	interface iTicketTier {
@@ -67,6 +69,22 @@ declare global {
 		paymentId?: string;
 		createdAt: string;
 		updatedAt: string;
+	}
+
+	interface iTaggedUser {
+		username: string;
+		user: Omit<
+			iUser,
+			| "fname"
+			| "lname"
+			| "age"
+			| "followers"
+			| "blocklist"
+			| "blog"
+			| "dob"
+			| "occupation"
+			| "email"
+		>;
 	}
 
 	// Clerk
