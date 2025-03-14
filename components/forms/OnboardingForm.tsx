@@ -35,7 +35,7 @@ export default function OnboardingForm({ user }: { user: iUser }) {
 			fname: user.fname ?? "",
 			lname: user.lname ?? "",
 			bio: user.bio ?? "",
-			dob: user.dob ?? "",
+			dob: user.dob,
 			occupation: user.occupation ?? "",
 		},
 	});
