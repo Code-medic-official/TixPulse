@@ -5,18 +5,7 @@ const isPublicRoute = createRouteMatcher(["/", "/api/webhook/clerk"]);
 const isOnboardingRoute = createRouteMatcher(["/onboarding"]);
 
 export default clerkMiddleware(async (auth, req: NextRequest) => {
-	const { userId, sessionId, sessionClaims, redirectToSignIn } = await auth();
-
-	// Protect all routes except Public routes
-	// if (!isPublicRoute(req)) {
-	// 	await auth.protect();
-	// }
-	console.log(
-		"🤑",
-		userId,
-		sessionId,
-		sessionClaims?.metadata?.onboardingComplete
-	);
+	const { userId, sessionClaims, redirectToSignIn } = await auth();
 
 	// If user isn't signed in and the route is private, redirect to sign-in
 	if (!userId && !isPublicRoute(req)) {
@@ -37,7 +26,7 @@ export default clerkMiddleware(async (auth, req: NextRequest) => {
 		!sessionClaims?.metadata?.onboardingComplete
 	) {
 		console.log(
-			"⭐ Redirect them to the /onboading route to complete onboarding"
+			"⭐ Redirect them to the /onboading "
 		);
 		const onboadingUrl = new URL("/onboarding", req.url);
 		return NextResponse.redirect(onboadingUrl);

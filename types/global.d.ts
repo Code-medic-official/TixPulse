@@ -16,7 +16,6 @@ declare global {
 		username: string;
 		imageUrl?: string;
 		email: string;
-		onboarded?: boolean;
 		followers?: (string | iUser)[];
 		blocklist?: (string | iUser)[];
 		
@@ -25,7 +24,6 @@ declare global {
 		lname?: string;
 		bio?: string;
 		dob?: string;
-		location?: string;
 		occupation?: string;
 		createdAt?: string;
 		updatedAt?: string;
