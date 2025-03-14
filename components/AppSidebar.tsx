@@ -69,7 +69,7 @@ export default function AppSidebar() {
 						<MotionBtn className="px-2 py-6 bg-gradient-to-br from-rose-600 to-orange-600 rounded-lg">
 							<Link
 								href="/blog"
-								className="w-full p-2 bg-background rounded-md  relative group transition duration-200 text-white hover:bg-transparent"
+								className="w-full p-2 bg-background rounded-md  relative group transition duration-200 text-foreground hover:bg-transparent"
 							>
 								Blog
 							</Link>
