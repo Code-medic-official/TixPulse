@@ -23,7 +23,7 @@ declare global {
 		fname?: string;
 		lname?: string;
 		bio?: string;
-		dob?: Date;
+		dob?: string;
 		occupation?: string;
 		createdAt?: string;
 		updatedAt?: string;

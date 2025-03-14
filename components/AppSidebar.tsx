@@ -12,6 +12,8 @@ import {
 	useSidebar,
 } from "./ui/sidebar";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { Notebook } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function AppSidebar() {
 	const { state } = useSidebar();
@@ -66,12 +68,16 @@ export default function AppSidebar() {
 			<SidebarFooter>
 				<Tooltip>
 					<TooltipTrigger asChild>
-						<MotionBtn className="px-2 py-6 bg-gradient-to-br from-rose-600 to-orange-600 rounded-lg">
+						<MotionBtn
+							size={state === "collapsed" ? "icon" : "lg"}
+							className="px-2 py-6 bg-gradient-to-br from-rose-600 to-orange-600 rounded-lg"
+						>
 							<Link
 								href="/blog"
-								className="w-full p-2 bg-background rounded-md  relative group transition duration-200 text-foreground hover:bg-transparent"
+								className={cn("w-full p-2 flex items-center justify-center  gap-1 bg-background rounded-md  relative group transition duration-200 text-foreground hover:bg-transparent", state === "collapsed" && "p-0 bg-transparent")}
 							>
-								Blog
+								<Notebook />
+								{state === "expanded" && <span>Blog</span>}
 							</Link>
 						</MotionBtn>
 					</TooltipTrigger>
