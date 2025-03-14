@@ -23,6 +23,7 @@ import {
 	updateUser,
 } from "@/lib/db/actions/user.actions";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function OnboardingForm({ user }: { user: iUser }) {
 	const [isLoading, startTransition] = useTransition();
