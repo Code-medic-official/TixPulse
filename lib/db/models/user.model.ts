@@ -26,12 +26,8 @@ const userSchema = new Schema(
 			default: "No event is gonna pass me with TixPulse🤩",
 		},
 		dob: Date,
-		location: String,
 		occupation: String,
-		onboarded: {
-			type: Boolean,
-			default: false,
-		},
+		
 		followers: {
 			type: [Schema.Types.ObjectId],
 			ref: "User",
