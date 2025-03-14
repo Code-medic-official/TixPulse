@@ -19,17 +19,15 @@ export default clerkMiddleware(async (auth, req: NextRequest) => {
 	if (userId && isOnboardingRoute(req)) return NextResponse.next();
 
 	// ON Protected Routes Catch users (signed in) who do not have `onboardingComplete: true` in their publicMetadata
-	// Redirect them to the /onboading route to complete onboarding
+	// Redirect them to the /onboarding route to complete onboarding
 	if (
 		userId &&
 		!isPublicRoute(req) &&
 		!sessionClaims?.metadata?.onboardingComplete
 	) {
-		console.log(
-			"⭐ Redirect them to the /onboading "
-		);
-		const onboadingUrl = new URL("/onboarding", req.url);
-		return NextResponse.redirect(onboadingUrl);
+		console.log("⭐ Redirect them to the /onboarding ");
+		const onboarding = new URL("/onboarding", req.url);
+		return NextResponse.redirect(onboarding);
 	}
 });
 

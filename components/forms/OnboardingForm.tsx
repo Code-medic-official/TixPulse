@@ -143,7 +143,7 @@ export default function OnboardingForm({ user }: { user: iUser }) {
 							<FormLabel>Date of birth</FormLabel>
 
 							<FormControl>
-								<Input {...field} type="date" />
+								<Input type="date" {...field} />
 							</FormControl>
 
 							<FormMessage />

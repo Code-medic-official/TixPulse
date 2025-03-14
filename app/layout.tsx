@@ -8,7 +8,7 @@ import "./globals.css";
 
 const poppinsFont = Poppins({
 	weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
-	subsets: ["latin"],
+	subsets: ["latin", "latin-ext"],
 	style: ["normal", "italic"],
 });
 
