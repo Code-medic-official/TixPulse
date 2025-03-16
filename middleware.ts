@@ -6,26 +6,19 @@ import {
 } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 
-const isPublicRoute = createRouteMatcher(["/", "/api/webhook/clerk"]);
+const isPublicRoute = createRouteMatcher(["/", "/api/webhook/clerk", "/api/uploadthing"]);
 const isOnboardingRoute = createRouteMatcher(["/onboarding"]);
 
 export default clerkMiddleware(async (auth, req: NextRequest) => {
-	const { userId,sessionClaims, redirectToSignIn} = await auth();
-	// const { publicMetadata } = (await currentUser()) as User;
-
+	const { userId, sessionClaims, redirectToSignIn } = await auth();
 	const publicMetadata = sessionClaims?.metadata;
 
 	console.log("🗝️", publicMetadata);
 
-	// If user isn't signed in and the route is private, redirect to sign-in
-	if (!userId && !isPublicRoute(req)) {
-		console.log(
-			"👉If the user isn't signed in and the route is private, redirect to sign-in"
-		);
-		return redirectToSignIn({ returnBackUrl: req.url });
-	}
+	// ? Protect private Routes.
+	if (!isPublicRoute(req)) await auth.protect();
 
-	// For users visiting /onboarding, don't try to redirect
+	// ? For users visiting /onboarding, don't try to redirect
 	if (userId && isOnboardingRoute(req)) return NextResponse.next();
 
 	// ON Protected Routes Catch users (signed in) who do not have `onboardingComplete: true` in their publicMetadata
