@@ -113,7 +113,7 @@ export default function EventForm({
 					banner: uploadedFile![0].ufsUrl,
 					hosts: hosts.map((h) => h._id) as string[],
 					guests: guests.map((g) => g._id) as string[],
-					activities: data.activities?.split(", ") ?? null,
+					activities: data.activities?.split(", "),
 				}),
 				{
 					loading: "Creating event...",

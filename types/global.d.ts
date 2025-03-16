@@ -50,10 +50,10 @@ declare global {
 		activities?: string[];
 		dressCode?: string;
 
-		state: "Draft" | "Published" | "Cancelled" | "Expired";
+		state?: "Draft" | "Published" | "Cancelled" | "Expired";
 
-		createdAt: string;
-		updatedAt: string;
+		createdAt?: string;
+		updatedAt?: string;
 	}
 
 	interface iTicketTier {
