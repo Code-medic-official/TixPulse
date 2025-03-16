@@ -31,22 +31,29 @@ declare global {
 
 	interface iEvent {
 		_id?: string;
+
+		// ? Step I
 		name: string;
-		slogan?: string;
-		description: string;
-		hosts: (string | iUser)[];
-		guests?: (string | iUser)[];
-		banner?: string;
 		date: string;
 		venue: string; // ? site/hall/building
 		location?: string; // 🤔 Google maps
-		state: "Draft" | "Published" | "Cancelled" | "Expired";
+		banner?: string;
+
+		// ? Step II
+		hosts: (string | iUser)[];
+		guests?: (string | iUser)[];
 		ageLimit?: number;
+
+		// ? Step III
+		slogan?: string;
+		description: string;
+		activities?: string[];
+		dressCode?: string;
+
+		state: "Draft" | "Published" | "Cancelled" | "Expired";
+
 		createdAt: string;
 		updatedAt: string;
-
-		activities?: string | string[];
-		dressCode?: string;
 	}
 
 	interface iTicketTier {

@@ -39,11 +39,13 @@ export const createUser = async (newUser: iUser): Promise<void> => {
 };
 
 // Test to implement tagging
-export const getTaggedUsers = async (tags: string[]): Promise<iTaggedUser[]> => {
+export const getTaggedUsers = async (
+	tags: string[]
+): Promise<iTaggedUser[]> => {
 	try {
 		await connectDb();
 
-		const taggedUsers= tags.map(async (tag) => {
+		const taggedUsers = tags.map(async (tag) => {
 			const user = await userModel
 				.findOne({ username: tag.split("@")[1] })
 				.select(
@@ -72,6 +74,21 @@ export const getUser = async (
 			.populate(["followers", "blocklist"]);
 
 		return JSON.parse(JSON.stringify(user));
+	} catch (error: any) {
+		throw new Error(error);
+	}
+};
+
+export const getUsers = async (): Promise<iUser[]> => {
+	try {
+		await connectDb();
+
+		const users = await userModel
+			.find()
+			.populate(["followers", "blocklist"])
+			.sort({ createdAt: "desc" });
+
+		return JSON.parse(JSON.stringify(users));
 	} catch (error: any) {
 		throw new Error(error);
 	}

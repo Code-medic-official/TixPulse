@@ -10,7 +10,7 @@ import { SignedIn, UserButton } from "@clerk/nextjs";
 export default function Navbar() {
 	return (
 		<>
-			<div className="w-screen md:w-full h-[9vh] p-2 sticky top-0 flex items-center justify-between gap-x-3 bg-secondary/30 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none">
+			<div className="w-screen md:w-full h-[9vh] p-2 flex items-center justify-between gap-x-3 bg-secondary/30 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none">
 				<div className="flex items-center justify-center gap-x-2">
 					<Link href="/" className="flex items-center gap-x-1">
 						<Image

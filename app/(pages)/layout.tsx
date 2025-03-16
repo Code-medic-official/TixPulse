@@ -26,7 +26,7 @@ export default function RootLayout({
 
 				<SidebarInset>
 					<ScrollArea className="h-screen">
-						<nav className="relative">
+						<nav className="sticky top-0">
 							<Navbar />
 						</nav>
 						<main className="p-2 md:p-3">{children}</main>

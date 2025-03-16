@@ -3,14 +3,18 @@
 import { revalidatePath } from "next/cache";
 import connectDb from "../db";
 import eventModel from "../models/event.model";
+import { z } from "zod";
+import { eventZodSchema } from "@/lib/formSchemas";
+import { redirect } from "next/navigation";
 
-export const createEvent = async (newEvent: iEvent): Promise<void> => {
+export const createEvent = async (newEvent: iEvent): Promise<iEvent> => {
 	try {
 		await connectDb();
 
-		await eventModel.create(newEvent);
+		const event = await eventModel.create(newEvent);
 
 		revalidatePath("/events");
+		return JSON.parse(JSON.stringify(event));
 	} catch (error: any) {
 		throw new Error(error);
 	}
