@@ -139,7 +139,7 @@ export default function EventForm({
 		console.error(error);
 
 		for (const field in error) {
-			errList = [...errList, { field, msg: error[field].message }];
+			errList = [...errList, { field, msg: (error[field as keyof typeof error] as any).message }];
 		}
 
 		toast((t) => (
