@@ -2,7 +2,7 @@
 
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
-import { ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -255,7 +255,7 @@ function SidebarTrigger({
 	onClick,
 	...props
 }: React.ComponentProps<typeof Button>) {
-	const { toggleSidebar } = useSidebar();
+	const { toggleSidebar, state } = useSidebar();
 
 	return (
 		<Button
@@ -272,9 +272,8 @@ function SidebarTrigger({
 			asChild
 		>
 			<Button size={"icon"} className={cn(className)}>
-				<ChevronRight />
+				{state === "collapsed" ? <ChevronRight /> : <ChevronLeft />}
 			</Button>
-			{/* <span className="sr-only">Toggle Sidebar</span> */}
 		</Button>
 	);
 }
@@ -722,5 +721,5 @@ export {
 	SidebarRail,
 	SidebarSeparator,
 	SidebarTrigger,
-	useSidebar
+	useSidebar,
 };
