@@ -1,5 +1,6 @@
+import { getUsers } from "@/lib/db/actions/user.actions";
 import { ChevronsUpDown, UserCircle2 } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import {
 	Command,
@@ -9,10 +10,8 @@ import {
 	CommandItem,
 	CommandList,
 } from "./ui/command";
-import { useEffect, useState } from "react";
-import { getUsers } from "@/lib/db/actions/user.actions";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Skeleton } from "./ui/skeleton";
-import { set } from "mongoose";
 
 export default function UserCombobox({
 	selectAction,
@@ -39,8 +38,6 @@ export default function UserCombobox({
 
 		if (!users) fetchUsers();
 	}, [`${users}`, `${exclude}`]);
-
-	console.log(searchableUsers, exclude);
 
 	const selectHandler = (value: string) => {
 		setValue(value);

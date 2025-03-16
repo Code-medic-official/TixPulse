@@ -100,7 +100,7 @@ export const FileUpload = ({
 											initial={{ opacity: 0 }}
 											animate={{ opacity: 1 }}
 											layout
-											className="text-base text-neutral-700 dark:text-neutral-300 truncate max-w-xs"
+											className="text-sm text-neutral-700 dark:text-neutral-300 truncate max-w-xs"
 										>
 											{file.name}
 										</motion.p>
@@ -108,7 +108,7 @@ export const FileUpload = ({
 											initial={{ opacity: 0 }}
 											animate={{ opacity: 1 }}
 											layout
-											className="rounded-lg px-2 py-1 w-fit shrink-0 text-sm text-neutral-600 dark:bg-neutral-800 dark:text-white shadow-input"
+											className="rounded-lg px-2 py-1 w-fit shrink-0 text-xs text-neutral-600 dark:bg-neutral-800 dark:text-white shadow-input"
 										>
 											{(file.size / (1024 * 1024)).toFixed(2)} MB
 										</motion.p>
@@ -119,7 +119,7 @@ export const FileUpload = ({
 											initial={{ opacity: 0 }}
 											animate={{ opacity: 1 }}
 											layout
-											className="px-1 py-0.5 rounded-md bg-gray-100 dark:bg-neutral-800 "
+											className="text-xs px-1 py-0.5 rounded-md bg-gray-100 dark:bg-neutral-800"
 										>
 											{file.type}
 										</motion.p>
@@ -128,6 +128,7 @@ export const FileUpload = ({
 											initial={{ opacity: 0 }}
 											animate={{ opacity: 1 }}
 											layout
+											className="text-xs"
 										>
 											modified{" "}
 											{new Date(file.lastModified).toLocaleDateString()}
